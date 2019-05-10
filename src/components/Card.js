@@ -4,12 +4,12 @@ import Tag from './Tag';
 export default function Card({ card }) {
   const { title, description, tags } = card;
   return (
-    <li>
-      {title}
-      {description}
+    <section className="card">
+      <h3>{title}</h3>
+      <p>{description}</p>
       {tags.map(tag => (
         <Tag key={tag}>{tag}</Tag>
       ))}
-    </li>
+    </section>
   );
 }

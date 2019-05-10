@@ -9,3 +9,47 @@ body {
   color: darkslategray;
   background: papayawhip;
 }
+
+input,
+button {
+  font-size: 1em;
+}
+
+button {
+  padding: 10px 20px;
+  border: none;
+  background: plum;
+  color: white;
+  font-weight: bold;
+  border-radius: 3px;
+}
+
+.card-list {
+  display: grid;
+  gap: 10px;
+}
+
+.card {
+  list-style: none;
+  padding: 20px;
+  background: white;
+  border-radius: 6px;
+}
+
+.tag {
+  background: hotpink;
+  padding: 1px 4px;
+  border-radius: 2px;
+  color: white;
+  margin-right: 4px;
+}
+
+.form {
+  display: grid;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.form__label {
+  display: grid;
+}
