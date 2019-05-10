@@ -23,7 +23,7 @@ export default class App extends Component {
     postNewCard(event)
       .then(newCard =>
         this.setState({
-          cards: [...this.state.cards, newCard],
+          cards: [newCard, ...this.state.cards],
         })
       )
       .catch(error => console.log(error));
