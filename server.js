@@ -11,6 +11,6 @@ app.get('/cards', (req, res) => {
 
 app.post('/cards', (req, res) => {
   Card.create(req.body)
-    .then(cards => res.json(cards))
+    .then(card => res.json(card))
     .catch(err => res.json(err));
 });

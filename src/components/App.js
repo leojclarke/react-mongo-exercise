@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { getCards } from '../services';
+import { getCards, postNewCard } from '../services';
 import CardsList from './CardsList';
+import Form from './Form';
 
 export default class App extends Component {
   state = {
@@ -17,12 +18,24 @@ export default class App extends Component {
       .catch(error => console.log(error));
   }
 
+  handleSubmit = event => {
+    event.preventDefault();
+    postNewCard(event)
+      .then(newCard =>
+        this.setState({
+          cards: [...this.state.cards, newCard],
+        })
+      )
+      .catch(error => console.log(error));
+  };
+
   render() {
     const { cards } = this.state;
 
     return (
       <main>
         <h1>Cards</h1>
+        <Form onSubmit={this.handleSubmit} />
         <CardsList cards={cards} />
       </main>
     );
