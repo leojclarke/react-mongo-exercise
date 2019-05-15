@@ -11,7 +11,7 @@ export default function Card({ card, onBookmark }) {
       <h3>{title}</h3>
       <p>{description}</p>
       {tags.map(tag => (
-        <Tag key={tag}>{tag}</Tag>
+        <Tag key={tag._id}>{tag}</Tag>
       ))}
     </section>
   );

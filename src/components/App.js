@@ -1,5 +1,10 @@
 import React, { Component } from 'react';
+<<<<<<< HEAD
 import { getCards, postNewCard, setLocal, getLocal } from '../services';
+=======
+import { BrowserRouter, Route, Switch, NavLink } from 'react-router-dom';
+import { getCards, postNewCard } from '../services';
+>>>>>>> feat/add-react-routing
 import CardsList from './CardsList';
 import Form from './Form';
 
@@ -26,7 +31,6 @@ export default class App extends Component {
   }
 
   handleSubmit = event => {
-    event.preventDefault();
     postNewCard(event)
       .then(newCard =>
         this.setState({
@@ -42,11 +46,27 @@ export default class App extends Component {
     const { cards } = this.state;
 
     return (
-      <main>
-        <h1>Cards</h1>
-        <Form onSubmit={this.handleSubmit} />
-        <CardsList cards={cards} />
-      </main>
+      <BrowserRouter>
+        <main>
+          <h1>React Cards App</h1>
+          <section className="nav-container">
+            <NavLink exact to="/">
+              <span className="nav-link">Home</span>
+            </NavLink>
+            <NavLink exact to="/create">
+              <span className="nav-link">Create Card</span>
+            </NavLink>
+          </section>
+
+          <Switch>
+            <Route
+              path="/create"
+              render={props => <Form onSubmit={this.handleSubmit} {...props} />}
+            />
+            <Route path="/" render={props => <CardsList cards={cards} />} />
+          </Switch>
+        </main>
+      </BrowserRouter>
     );
   }
 }
