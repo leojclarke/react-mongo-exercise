@@ -25,15 +25,6 @@ export default class App extends Component {
       .catch(error => console.log(error));
   }
 
-  // handleDelete = event => {
-  //   .then(deleteCards =>
-  //     this.setState({
-  //       cards: [deleteCards, ...this.state.cards],
-  //     })
-  //   )
-  //   .catch(error => console.log(error));
-  // }
-
   handleSubmit = event => {
     event.preventDefault();
     postNewCard(event)
