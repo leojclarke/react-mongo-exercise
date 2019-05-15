@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { getCards, postNewCard } from '../services';
+import { getCards, postNewCard, setLocal, getLocal } from '../services';
 import CardsList from './CardsList';
 import Form from './Form';
 
@@ -12,11 +12,27 @@ export default class App extends Component {
     this.loadCards();
   }
 
+  componentDidUpdate(prevProps, prevState) {
+    const { cards } = this.state;
+    if (prevState.cards !== cards) {
+      setLocal('cards', cards);
+    }
+  }
+
   loadCards() {
     getCards()
       .then(data => this.setState({ cards: data }))
       .catch(error => console.log(error));
   }
+
+  // handleDelete = event => {
+  //   .then(deleteCards =>
+  //     this.setState({
+  //       cards: [deleteCards, ...this.state.cards],
+  //     })
+  //   )
+  //   .catch(error => console.log(error));
+  // }
 
   handleSubmit = event => {
     event.preventDefault();
@@ -28,6 +44,8 @@ export default class App extends Component {
       )
       .catch(error => console.log(error));
   };
+
+  handleBookmarkToggle = card => {};
 
   render() {
     const { cards } = this.state;
