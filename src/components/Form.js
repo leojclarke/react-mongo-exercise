@@ -1,8 +1,14 @@
 import React from 'react';
 
 export default function Form(props) {
+  function handleSubmit(event) {
+    event.preventDefault();
+    props.onSubmit(event);
+    props.history.push('/');
+  }
+
   return (
-    <form className="form" onSubmit={props.onSubmit}>
+    <form className="form" onSubmit={handleSubmit}>
       <label className="form__label">
         TITLE <input name="title" placeholder="TITLE" type="text" />
       </label>
